@@ -26,8 +26,8 @@ function ssb_extract_faq_items( array $block ): array {
 	$items     = [];
 
 	foreach ( $raw_items as $item ) {
-		$question = trim( wp_strip_all_tags( $item['question'] ?? '' ) );
-		$answer   = trim( wp_strip_all_tags( $item['answer'] ?? '' ) );
+		$question = trim( wp_specialchars_decode( wp_strip_all_tags( $item['question'] ?? '' ), ENT_QUOTES ) );
+		$answer   = trim( wp_specialchars_decode( wp_strip_all_tags( $item['answer'] ?? '' ), ENT_QUOTES ) );
 
 		if ( '' === $question || '' === $answer ) {
 			continue;
@@ -72,6 +72,32 @@ function ssb_build_faq_schema( array $items ): array {
 }
 
 /**
+ * Recursively collects all FAQ blocks from a block tree.
+ *
+ * parse_blocks() returns a nested tree — this walks innerBlocks so FAQ
+ * blocks inside Group, Columns, or other containers are not missed.
+ *
+ * @param array[] $blocks Array of parsed blocks (may contain innerBlocks).
+ *
+ * @return array[] All FAQ blocks found at any depth.
+ */
+function ssb_find_faq_blocks( array $blocks ): array {
+	$found = [];
+
+	foreach ( $blocks as $block ) {
+		if ( 'simple-schema-blocks/faq' === $block['blockName'] ) {
+			$found[] = $block;
+		}
+
+		if ( ! empty( $block['innerBlocks'] ) ) {
+			$found = array_merge( $found, ssb_find_faq_blocks( $block['innerBlocks'] ) );
+		}
+	}
+
+	return $found;
+}
+
+/**
  * Outputs FAQPage JSON-LD structured data in the page <head>.
  *
  * Runs on wp_head. Returns early on non-singular pages or when
@@ -93,14 +119,10 @@ function ssb_output_faq_schema(): void {
 		return;
 	}
 
-	$blocks    = parse_blocks( $content );
-	$all_items = [];
+	$faq_blocks = ssb_find_faq_blocks( parse_blocks( $content ) );
+	$all_items  = [];
 
-	foreach ( $blocks as $block ) {
-		if ( 'simple-schema-blocks/faq' !== $block['blockName'] ) {
-			continue;
-		}
-
+	foreach ( $faq_blocks as $block ) {
 		$all_items = array_merge( $all_items, ssb_extract_faq_items( $block ) );
 	}
 
@@ -111,6 +133,6 @@ function ssb_output_faq_schema(): void {
 	$schema = ssb_build_faq_schema( $all_items );
 	$json   = wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
 
-	echo '<script type="application/ld+json">' . $json . '</script>' . "\n";
+	echo "\n" . '<script type="application/ld+json">' . $json . '</script>' . "\n";
 }
 add_action( 'wp_head', 'ssb_output_faq_schema' );
