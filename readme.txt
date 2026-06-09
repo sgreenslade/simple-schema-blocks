@@ -66,6 +66,26 @@ No. Styles and scripts are enqueued only on pages that contain the FAQ block.
 2. The FAQ accordion on the front end.
 3. The FAQPage JSON-LD output in the page source.
 
+== Development ==
+
+Contributions are welcome. The plugin uses `@wordpress/scripts` for the block build.
+
+**Requirements:** Node.js 20+ and npm.
+
+**Install dependencies:**
+
+    npm install
+
+**Build:**
+
+    npm run build
+
+**Build a distribution zip:**
+
+    bin/build-zip.sh
+
+The script reads the version from `simple-schema-blocks.php` and outputs `simple-schema-blocks-{version}.zip` into the plugin directory. Pass a custom path as the first argument to override the output location. Requires bash — works on macOS, Linux, and Windows via WSL or Git Bash.
+
 == Changelog ==
 
 = 0.1.0 =
