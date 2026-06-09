@@ -1,0 +1,1 @@
+import './faq/index.js';

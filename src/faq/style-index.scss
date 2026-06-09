@@ -1,0 +1,128 @@
+.wp-block-simple-schema-blocks-faq {
+	.ssb-faq {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.ssb-faq__item {
+		margin: 0;
+		padding: 0;
+	}
+
+	.ssb-faq__question {
+		margin: 0;
+		padding: 0;
+	}
+
+	.ssb-faq__question button {
+		/* Strip browser button chrome so the button inherits theme heading styles */
+		appearance: none;
+		background: none;
+		border: none;
+		border-radius: 0;
+		box-shadow: none;
+		cursor: pointer;
+		display: block;
+		font: inherit;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+		width: 100%;
+	}
+
+	.ssb-faq__answer {
+		margin: 0;
+	}
+}
+
+/* ── Editor UI only ─────────────────────────────────────────────────────────── */
+.ssb-faq-editor__item-header {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	gap: 2px;
+	margin-bottom: 8px;
+}
+
+.ssb-faq-editor__item-number {
+	color: #757575;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 1;
+	margin-right: 2px;
+	min-width: 16px;
+}
+
+.ssb-faq-editor__divider {
+	border: none;
+	border-top: 1px solid #e0e0e0;
+	margin: 20px 0;
+}
+
+.ssb-faq-editor__add-button {
+	margin-top: 20px !important;
+}
+
+.ssb-faq-editor__css-intro {
+	color: #757575;
+	font-size: 12px;
+	margin-bottom: 8px;
+}
+
+.ssb-faq-editor__css-list {
+	list-style: none;
+	margin: 0 0 16px;
+	padding: 0;
+
+	li {
+		margin-bottom: 4px;
+	}
+
+	code {
+		background: #f0f0f0;
+		border-radius: 2px;
+		display: inline-block;
+		font-size: 11px;
+		padding: 2px 6px;
+	}
+}
+
+.ssb-faq-editor__css-example {
+	margin-bottom: 16px;
+}
+
+.ssb-faq-editor__css-example-label {
+	color: #757575;
+	font-size: 11px;
+	margin-bottom: 4px;
+}
+
+.ssb-faq-editor__css-example-block {
+	position: relative;
+}
+
+.ssb-faq-editor__css-example-code {
+	background: #1e1e1e;
+	border-radius: 4px;
+	color: #9cdcfe;
+	font-size: 11px;
+	line-height: 1.6;
+	margin: 0 0 4px;
+	overflow-x: auto;
+	padding: 10px 12px;
+	white-space: pre;
+
+	code {
+		background: none;
+		color: inherit;
+		font-size: inherit;
+		padding: 0;
+	}
+}
+
+.ssb-faq-editor__css-copy {
+	font-size: 11px !important;
+	height: auto !important;
+	padding: 2px 8px !important;
+}

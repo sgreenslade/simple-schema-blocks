@@ -1,0 +1,25 @@
+{
+	"name": "simple-schema-blocks",
+	"version": "0.1.0",
+	"description": "Gutenberg blocks that render readable content and output valid JSON-LD structured data.",
+	"author": "Web-Tastic",
+	"license": "GPL-2.0-or-later",
+	"main": "src/index.js",
+	"scripts": {
+		"build": "wp-scripts build --experimental-modules",
+		"start": "wp-scripts start --experimental-modules",
+		"lint:js": "wp-scripts lint-js",
+		"lint:css": "wp-scripts lint-style"
+	},
+	"dependencies": {
+		"@wordpress/block-editor": "*",
+		"@wordpress/blocks": "*",
+		"@wordpress/components": "*",
+		"@wordpress/i18n": "*",
+		"@wordpress/icons": "^13.3.0",
+		"@wordpress/interactivity": "*"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.0.0"
+	}
+}

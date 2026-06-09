@@ -1,0 +1,49 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "simple-schema-blocks/faq",
+	"version": "0.1.0",
+	"title": "FAQ",
+	"category": "simple-schema-blocks",
+	"icon": "editor-help",
+	"description": "Add a FAQ section with questions and answers. Automatically outputs valid FAQPage JSON-LD structured data.",
+	"keywords": [ "faq", "schema", "structured data", "accordion", "questions" ],
+	"textdomain": "simple-schema-blocks",
+	"editorScript": "file:./index.js",
+	"style": "file:./index.css",
+	"viewScriptModule": "file:./view.js",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [ { "question": "", "answer": "" } ],
+			"items": {
+				"type": "object",
+				"properties": {
+					"question": {
+						"type": "string",
+						"default": ""
+					},
+					"answer": {
+						"type": "string",
+						"default": ""
+					}
+				}
+			}
+		},
+		"firstItemOpen": {
+			"type": "boolean",
+			"default": true
+		},
+		"allowMultipleOpen": {
+			"type": "boolean",
+			"default": false
+		},
+		"blockId": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false
+	}
+}
