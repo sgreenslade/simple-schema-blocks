@@ -2,5 +2,6 @@ build/
 node_modules/
 vendor/
 *.log
+*.zip
 .DS_Store
 assets/.DS_Store
