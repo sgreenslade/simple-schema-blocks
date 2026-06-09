@@ -10,6 +10,7 @@
 	"keywords": [ "faq", "schema", "structured data", "accordion", "questions" ],
 	"textdomain": "simple-schema-blocks",
 	"editorScript": "file:./index.js",
+	"editorStyle": "file:./editor.css",
 	"style": "file:./index.css",
 	"viewScriptModule": "file:./view.js",
 	"attributes": {
