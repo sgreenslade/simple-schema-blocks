@@ -23,8 +23,7 @@ zip -r "$OUTPUT" \
   simple-schema-blocks/includes \
   simple-schema-blocks/languages \
   simple-schema-blocks/assets \
-  --exclude "*/assets/.DS_Store" \
-  --exclude "*/assets/ASSETS.md" \
-  --exclude "*/languages/.gitkeep"
+  --exclude "*/.DS_Store" \
+  --exclude "*/assets/ASSETS.md"
 
 echo "Built $OUTPUT (v$VERSION)"

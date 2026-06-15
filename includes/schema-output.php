@@ -131,8 +131,7 @@ function ssb_output_faq_schema(): void {
 	}
 
 	$schema = ssb_build_faq_schema( $all_items );
-	$json   = wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
 
-	echo "\n" . '<script type="application/ld+json">' . $json . '</script>' . "\n";
+	echo "\n" . '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
 }
 add_action( 'wp_head', 'ssb_output_faq_schema' );
